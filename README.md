@@ -17,7 +17,7 @@
 - Code: https://github.com/hieunguyen253/Bao_Cao_Tong_Quan_Project/tree/main/Code/ESP32_Web_Server
 - Video Demo: https://youtu.be/xXKMr5YzogE
 - Tham khảo: https://randomnerdtutorials.com/esp32-web-server-arduino-ide/
-### Raspberry Pi 4 Web Server: 
+### Raspberry Pi 4 Web Server( có làm quen với máy tính nhúng ): 
 - Thực hiện kết nối cảm biến nhiệt độ, độ ẩm DHT1 với Raspberry PI. Lập chương trình thực hiện chức năng sau:
 	+ Cải đặt máy chủ web flask, cài đặt hệ quản trị cơ sở dữ liệu Mariadb.
 	+ Đọc dữ liệu từ cảm biển DHT11 đưa vào cơ sở dữ liệu Mariadb.
