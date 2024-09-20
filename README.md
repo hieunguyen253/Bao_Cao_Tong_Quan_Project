@@ -14,7 +14,7 @@
 - Giao diện điều khiển:
 
 ![alt](PIC/Giao_dien_ESP.png)
-- Code: https://github.com/hieunguyen2k4/ESP32_Web_Server
+- Code: https://github.com/hieunguyen253/Bao_Cao_Tong_Quan_Project/tree/main/Code/ESP32_Web_Server
 - Video Demo: https://youtu.be/xXKMr5YzogE
 - Tham khảo: https://randomnerdtutorials.com/esp32-web-server-arduino-ide/
 ### Raspberry Pi 4 Web Server: 
@@ -26,7 +26,7 @@
 
 ![alt](PIC/Giao_dien_Rasp.png)
 - Video Demo: https://youtube.com/shorts/jiwZ2iEqW4E
-- Code: https://github.com/hieunguyen2k4/SIC_Nhom11
+- Code: https://github.com/hieunguyen253/Bao_Cao_Tong_Quan_Project/tree/main/Code/RaspberryPi4_Web_Server/SourceCode
 - Tham khảo: https://github.com/Vothongminh/CODE-025/blob/main/index.html
 
 **Các web đã được tùy chỉnh giao diện từ giao diện mẫu [ em có nắm căn bản (chưa thực hành nhiều) về HTML, CSS và Javascript]**
