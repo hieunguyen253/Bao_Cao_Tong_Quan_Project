@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Device Control Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="mt-5 pt-3">
+        <!-- Device Control -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Device Control</h2>
+                </div>
+            </div>
+        </div>
+        <form action="" id="form">
+            <div class="appliances">
+                <div class="appliance">
+                    <input type="checkbox" name="device1" id="device1" value="device1">
+                    <label for="device1">
+                        <i class="l"></i>
+                        <strong>Device 1</strong>
+                        <span data-o=" " data-c=" "></span>
+                        <small></small>
+                    </label>
+                </div>
+                <div class="appliance">
+                    <input type="checkbox" name="device2" id="device2" value="device2">
+                    <label for="device2">
+                        <i class="a"></i>
+                        <strong>Device 2</strong>
+                        <span data-o=" " data-c=" "></span>
+                        <small></small>
+                    </label>
+                </div>
+            </div>
+        </form>
+        <div class="wrapper border border-3 rounded border-primary">
+            <canvas id="myChart"></canvas>
+        </div>
+        <script>
+            var labels = [];
+            var temperatureData = [];
+            var humidityData = [];
+            const chartData = {
+                labels: labels,
+                datasets: [{
+                    label: 'Temperature',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: temperatureData
+                },
+                {
+                    label: 'Humidity',
+                    backgroundColor: 'rgb(99, 255, 132)',
+                    borderColor: 'rgb(99, 255, 132)',
+                    data: humidityData
+                }]
+            };
+            
+            const config = {
+                type: 'line',
+                data: chartData,
+                options: {
+                    animation: false
+                }
+            };
+            
+            var myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+            function updateChart() {
+                $.getJSON('/data', function(data) {
+                    myChart.data.labels = data.timestamp;
+                    myChart.data.datasets[0].data = data.temperature;
+                    myChart.data.datasets[1].data = data.humidity;
+                    myChart.update();
+                });
+            }
+            $(document).ready(function(){
+                updateChart();
+                setInterval(updateChart, 30000);
+            });
+            $('#form input[type="checkbox"]').change(function() {
+                var device = $(this).attr('id');
+                var action = $(this).is(':checked') ? 'toggle' : 'toggle';
+                $.getJSON('/update_device/' + device + '/' + action, function(response) {
+                    console.log(response);
+                });
+            });
+        </script>
+    </main>
+</body>
+</html>
